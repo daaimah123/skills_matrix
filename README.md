@@ -6,7 +6,7 @@
 
 Let's be real—figuring out your career path is HARD. One day you're coding in bliss, the next you're questioning all your life choices because a CSS bug won't fix itself. Sound familiar?
 
-Skills Matrix is your new BFF for career clarity. It's an interactive tool that helps you map out what you're actually good at (not what your LinkedIn says), what you need to work on (we all have those skills), what makes you jump out of bed in the morning, and what makes you want to hide under the covers.
+Skills Matrix gives you something closer to career clarity. It's an interactive tool that helps you map out what you're actually good at (not what your LinkedIn says), what you need to work on (we all have those skills), what makes you jump out of bed in the morning, and what makes you want to hide under the covers.
 
 ## 💁‍♀️ Why Should You Care?
 
@@ -97,7 +97,7 @@ Zero backend because who needs that drama? It all runs in your browser like magi
 
 ### You'll Need:
 
-- Node.js 16.8+ (older versions might work but we're not making any promises)
+- Node.js 16.8+ (older versions might work but I'm not making any promises)
 - npm or yarn (pick your poison)
 
 ### Get It Running:
