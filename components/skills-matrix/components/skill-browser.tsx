@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { List, Info } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { Button } from "../../ui/button"
 import {
   Dialog,
   DialogContent,
@@ -10,11 +10,11 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog"
-import { Input } from "@/components/ui/input"
-import { ScrollArea } from "@/components/ui/scroll-area"
-import { Badge } from "@/components/ui/badge"
-import { Tooltip, TooltipContent, TooltipTrigger, TooltipProvider } from "@/components/ui/tooltip"
+} from "../../ui/dialog"
+import { Input } from "../../ui/input"
+import { ScrollArea } from "../../ui/scroll-area"
+import { Badge } from "../../ui/badge"
+import { Tooltip, TooltipContent, TooltipTrigger, TooltipProvider } from "../../ui/tooltip"
 import type { QuadrantKey, SkillCategory } from "../types"
 import { skillsList, skillsListWithDescriptions, quadrantLabels } from "../data"
 

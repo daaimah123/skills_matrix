@@ -1,7 +1,7 @@
 "use client"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
+import { Button } from "../../ui/button"
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../../ui/card"
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "../../ui/accordion"
 
 interface InstructionsProps {
   show: boolean
