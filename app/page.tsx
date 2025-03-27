@@ -528,7 +528,7 @@ export default function SkillsMatrix() {
   }
 
   // Update the handleDragOver function parameter types
-  const handleDragOver = (e) => {
+  const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault()
   }
 
