@@ -26,7 +26,7 @@ https://daaimah123.github.io/skills_matrix/
 - 🌱 Actually help your reports. Guide them with something better than generic advice
 - 🤔 Decide if you want that promotion. Technical leadership or people management? The eternal question...
 
-### For the Career Metamorphosis Crowd
+### For the Career Changing Crowd (like me)
 
 - 🔄 Spot those transferable skills. Yes, your current skills ARE valuable elsewhere!
 - 🎯 Target the right learning paths. Don't waste time on skills you'll hate using
