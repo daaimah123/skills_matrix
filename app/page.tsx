@@ -451,8 +451,8 @@ export default function SkillsMatrix() {
   const [searchTerm, setSearchTerm] = useState("")
   const [selectedCategory, setSelectedCategory] = useState("all")
 
-  const inputRef = useRef(null)
-  const descriptionInputRef = useRef(null)
+  const inputRef = useRef<HTMLInputElement>(null)
+  const descriptionInputRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
     if (editingSkill.quadrant !== null && inputRef.current) {
