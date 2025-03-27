@@ -1,6 +1,6 @@
 # 🎯 Skills Matrix: Because Career Confusion Isn't Cute
 
-![Skills Matrix GIF](screenshots/skills-matrix-screenshot.png)
+![skills matrix exercise app](https://github.com/user-attachments/assets/d2279ae9-bf15-4e97-b338-39cf5479df04)
 
 ## 🔥 What's This All About?
 
