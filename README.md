@@ -42,7 +42,7 @@ Skills Matrix is your new BFF for career clarity. It's an interactive tool that 
 - 🧩 **Drag-and-drop quadrants** Because your skills aren't static and neither is this app
 - ☕ **Hover for the tea** Info icons reveal the juicy details about each skill
 - 🦄 **Add your own weird skills** "Cat herding" and "Explaining tech to grandparents" are valid skills too
-- 📚 **Pre-loaded skill library** We did the boring work so you don't have to
+- 📚 **Pre-loaded skill library** I did the boring work so you don't have to
 - 🏠 **Caregiving & Life Skills included** Because managing a household is basically running a small business
 - 💖 **Nonprofit sector focus** For the do-gooders making less money but more impact
 - 💾 **Save your work** Export as JSON because even self-reflection needs a backup
@@ -79,15 +79,15 @@ Let's be real—some of the most intense skill-building happens outside the offi
 - 🏠 **Managed a household** You've practiced vendor management, budgeting, and logistics coordination
 - 🎉 **Planned family events** You've honed project management, stakeholder communication, and crisis management
 
-These aren't "soft" skills—they're essential leadership capabilities that organizations desperately need but often undervalue. Our Skills Matrix helps you identify, articulate, and leverage these powerful transferable skills in your professional life.
+These aren't "soft" skills—they're essential leadership capabilities that organizations desperately need but often undervalue. This Skills Matrix helps you identify, articulate, and leverage these powerful transferable skills in your professional life.
 
 ## 🛠️ Tech Stuff (For The Nerds Among Us)
 
 Built with the cool kids' stack:
 
-- Next.js (App Router because we're not dinosaurs)
+- Next.js (App Router because this thing isn't a dinosaur)
 - React (duh)
-- TypeScript (because we like catching errors before they catch us)
+- TypeScript (because I like catching errors before they catch me)
 - Tailwind CSS (no more fighting with CSS, life's too short)
 - shadcn/ui components (pretty buttons without the hassle)
 
@@ -112,7 +112,7 @@ npm run dev
 
 ## 📜 License
 
-MIT (aka do whatever you want, we're not cops)
+MIT (aka do whatever you want, I'm not the feebs)
 
 ## 🙏 Acknowledgements
 
