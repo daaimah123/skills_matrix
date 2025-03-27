@@ -375,7 +375,7 @@ export default function SkillsMatrix() {
   // Create a lookup map for skill descriptions
   const skillDescriptions = Object.values(skillsListWithDescriptions)
     .flat()
-    .reduce((acc, skill) => {
+    .reduce<Record<string, string>>((acc, skill) => {
       acc[skill.name] = skill.description
       return acc
     }, {})
