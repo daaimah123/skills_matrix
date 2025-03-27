@@ -1,13 +1,7 @@
 "use client"
 
 import type React from "react"
-import { 
-    Card,
-    CardContent,
-    CardDescription,
-    CardHeader,
-    CardTitle
-} from "../../ui/card"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { SkillItem } from "./skill-item"
 import type { QuadrantKey } from "../types"
 import { quadrantDescriptions } from "../data"

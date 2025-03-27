@@ -1,11 +1,11 @@
 "use client"
 
 import { useState } from "react"
-import type { QuadrantKey } from "../types"
+import { QuadrantKey, SkillsState } from "../types"
 import { initialSkills, initialSkillDescriptions, customDescriptions } from "../data"
 
 export function useSkills() {
-  const [skills, setSkills] = useState(initialSkills)
+  const [skills, setSkills] = useState<SkillsState>(initialSkills)
   const [allSkillDescriptions, setAllSkillDescriptions] = useState({
     ...initialSkillDescriptions,
     ...customDescriptions,
@@ -42,12 +42,12 @@ export function useSkills() {
       const updatedSkills = [...skills[quadrant]]
       const oldSkill = updatedSkills[index]
       updatedSkills[index] = newValue.trim()
-
+      
       setSkills({
         ...skills,
         [quadrant]: updatedSkills,
       })
-
+      
       // Update the description key if it exists
       if (allSkillDescriptions[oldSkill]) {
         const newDescriptions = { ...allSkillDescriptions }
@@ -56,6 +56,10 @@ export function useSkills() {
         setAllSkillDescriptions(newDescriptions)
       }
     }
+  }
+
+  const updateSkills = (updatedSkills: SkillsState) => {
+    setSkills(updatedSkills)
   }
 
   const saveMatrix = () => {
@@ -81,6 +85,7 @@ export function useSkills() {
     addSkill,
     removeSkill,
     editSkill,
+    updateSkills,
     saveMatrix,
   }
 }

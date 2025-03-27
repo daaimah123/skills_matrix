@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Save } from "lucide-react"
+import { Save, HelpCircle } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { TooltipProvider } from "@/components/ui/tooltip"
 import { QuadrantCard } from "./components/quadrant-card"
@@ -14,9 +14,22 @@ import type { QuadrantKey } from "./types"
 
 export function SkillsMatrix() {
   const [showInstructions, setShowInstructions] = useState(false)
-  const { skills, allSkillDescriptions, addSkill, removeSkill, editSkill, saveMatrix } = useSkills()
-
-  const { draggedSkill, handleDragStart, handleDragOver, handleDrop } = useDragDrop(skills, editSkill)
+  const { 
+    skills, 
+    allSkillDescriptions, 
+    addSkill, 
+    removeSkill, 
+    editSkill, 
+    updateSkills,
+    saveMatrix 
+  } = useSkills()
+  
+  const { 
+    draggedSkill, 
+    handleDragStart, 
+    handleDragOver, 
+    handleDrop 
+  } = useDragDrop(skills, updateSkills)
 
   return (
     <TooltipProvider>
@@ -29,11 +42,12 @@ export function SkillsMatrix() {
             Map your skills, preferences, and career path with clarity and confidence
           </p>
           <div className="mt-4 flex justify-center">
-            <Button
-              variant="outline"
+            <Button 
+              variant="outline" 
               onClick={() => setShowInstructions(!showInstructions)}
               className="flex items-center gap-2"
             >
+              <HelpCircle className="h-4 w-4" />
               {showInstructions ? "Hide Instructions" : "How to Use This Tool"}
             </Button>
           </div>
@@ -59,14 +73,15 @@ export function SkillsMatrix() {
             />
           ))}
         </div>
-
-        <AddSkillForm skills={skills} onAddSkill={addSkill} descriptions={allSkillDescriptions} />
+        
+        <AddSkillForm 
+          skills={skills}
+          onAddSkill={addSkill}
+          descriptions={allSkillDescriptions}
+        />
 
         <div className="flex justify-center">
-          <Button
-            onClick={saveMatrix}
-            className="flex items-center bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600"
-          >
+          <Button onClick={saveMatrix} className="flex items-center bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600">
             <Save className="h-4 w-4 mr-2" />
             Save Matrix
           </Button>

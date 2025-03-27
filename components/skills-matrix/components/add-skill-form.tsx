@@ -1,14 +1,13 @@
 "use client"
 
 import type React from "react"
-
 import { useState, useRef, useEffect } from "react"
-import { PlusCircle, X } from "lucide-react"
-import { Button } from "../../ui/button"
-import { Input } from "../../ui/input"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../../ui/card"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../ui/tabs"
-import { SkillsBrowser } from "./skill-browser"
+import { PlusCircle, X, List } from 'lucide-react'
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { SkillsBrowser } from "./skills-browser"
 import type { QuadrantKey, SkillsState } from "../types"
 import { quadrantLabels, quadrantDescriptions } from "../data"
 

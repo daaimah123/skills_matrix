@@ -1,11 +1,12 @@
 "use client"
 
-import type React from "react"
-
 import { useState } from "react"
 import type { QuadrantKey, DraggedSkill, SkillsState } from "../types"
 
-export function useDragDrop(skills: SkillsState, setSkills: React.Dispatch<React.SetStateAction<SkillsState>>) {
+export function useDragDrop(
+  skills: SkillsState,
+  updateSkills: (updatedSkills: SkillsState) => void
+) {
   const [draggedSkill, setDraggedSkill] = useState<DraggedSkill>(null)
 
   const handleDragStart = (quadrant: QuadrantKey, index: number, skill: string) => {
@@ -25,7 +26,8 @@ export function useDragDrop(skills: SkillsState, setSkills: React.Dispatch<React
       // Add to target quadrant
       const targetSkills = [...skills[targetQuadrant], draggedSkill.skill]
 
-      setSkills({
+      // Update skills state
+      updateSkills({
         ...skills,
         [draggedSkill.quadrant]: sourceSkills,
         [targetQuadrant]: targetSkills,

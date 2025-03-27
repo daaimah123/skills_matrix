@@ -1,12 +1,11 @@
 "use client"
 
 import type React from "react"
-
 import { useState, useRef, useEffect } from "react"
-import { Edit, Trash2, Check, X, Info } from "lucide-react"
-import { Button } from "../../ui/button"
-import { Input } from "../../ui/input"
-import { Tooltip, TooltipContent, TooltipTrigger, TooltipProvider } from "../../ui/tooltip"
+import { Edit, Trash2, Check, X, Info } from 'lucide-react'
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Tooltip, TooltipContent, TooltipTrigger, TooltipProvider } from "@/components/ui/tooltip"
 
 interface SkillItemProps {
   skill: string
@@ -26,6 +25,11 @@ export function SkillItem({ skill, description, onDragStart, onRemove, onEdit }:
       inputRef.current.focus()
     }
   }, [isEditing])
+
+  // Update editValue when skill changes (e.g., from parent)
+  useEffect(() => {
+    setEditValue(skill)
+  }, [skill])
 
   const handleSave = () => {
     if (editValue.trim()) {
