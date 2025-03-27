@@ -1,11 +1,10 @@
 "use client"
 
 import type React from "react"
-
 import { useState, useRef, useEffect } from "react"
-import { PlusCircle, Save, Trash2, Edit, Check, X, List, Info } from "lucide-react"
+import { PlusCircle, Save, Trash2, Edit, Check, X, List, Info, HelpCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import {
@@ -19,6 +18,7 @@ import {
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Badge } from "@/components/ui/badge"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 
 // Define the skill type with description
 type Skill = {
@@ -486,6 +486,7 @@ export default function SkillsMatrix() {
   const [addCustomSkillOpen, setAddCustomSkillOpen] = useState(false)
   const [searchTerm, setSearchTerm] = useState("")
   const [selectedCategory, setSelectedCategory] = useState<SkillCategory>("all")
+  const [showInstructions, setShowInstructions] = useState(false)
 
   const inputRef = useRef<HTMLInputElement>(null)
   const descriptionInputRef = useRef<HTMLInputElement>(null)
@@ -628,10 +629,10 @@ export default function SkillsMatrix() {
 
   // Update the quadrantLabels and quadrantDescriptions types
   const quadrantLabels: Record<QuadrantKey, string> = {
-    goodAt: "What I'm Good At",
-    notGoodAt: "What I'm Not Yet Good At",
-    enjoy: "What I Enjoy Doing",
-    notEnjoy: "What I Don't Enjoy Doing",
+    goodAt: "✨ What I'm Good At",
+    notGoodAt: "🌱 What I'm Not Yet Good At",
+    enjoy: "🎯 What I Enjoy Doing",
+    notEnjoy: "⛔ What I Don't Enjoy Doing",
   }
 
   const quadrantDescriptions: Record<QuadrantKey, string> = {
@@ -642,10 +643,17 @@ export default function SkillsMatrix() {
   }
 
   const quadrantColors: Record<QuadrantKey, string> = {
-    goodAt: "border-green-200 bg-green-50 dark:bg-green-950/20",
-    notGoodAt: "border-yellow-200 bg-yellow-50 dark:bg-yellow-950/20",
-    enjoy: "border-blue-200 bg-blue-50 dark:bg-blue-950/20",
-    notEnjoy: "border-red-200 bg-red-50 dark:bg-red-950/20",
+    goodAt: "border-emerald-200 bg-emerald-50 dark:bg-emerald-950/20",
+    notGoodAt: "border-amber-200 bg-amber-50 dark:bg-amber-950/20",
+    enjoy: "border-sky-200 bg-sky-50 dark:bg-sky-950/20",
+    notEnjoy: "border-rose-200 bg-rose-50 dark:bg-rose-950/20",
+  }
+
+  const quadrantGradients: Record<QuadrantKey, string> = {
+    goodAt: "from-emerald-50 to-emerald-100 dark:from-emerald-950/10 dark:to-emerald-950/20",
+    notGoodAt: "from-amber-50 to-amber-100 dark:from-amber-950/10 dark:to-amber-950/20",
+    enjoy: "from-sky-50 to-sky-100 dark:from-sky-950/10 dark:to-sky-950/20",
+    notEnjoy: "from-rose-50 to-rose-100 dark:from-rose-950/10 dark:to-rose-950/20",
   }
 
   const allSkills = Object.values(skillsList).flat()
@@ -657,32 +665,144 @@ export default function SkillsMatrix() {
 
   return (
     <TooltipProvider>
-      <div className="container mx-auto py-8 max-w-4xl">
+      <div className="container mx-auto py-8 max-w-5xl">
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold mb-2">Skills Matrix Exercise</h1>
-          <p className="text-muted-foreground">
-            Identify your strengths, growth areas, preferences, and dislikes to guide your career decisions
+          <h1 className="text-4xl font-bold mb-3 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+            Skills Matrix
+          </h1>
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+            Map your skills, preferences, and career path with clarity and confidence
           </p>
+          <div className="mt-4 flex justify-center">
+            <Button
+              variant="outline"
+              onClick={() => setShowInstructions(!showInstructions)}
+              className="flex items-center gap-2"
+            >
+              <HelpCircle className="h-4 w-4" />
+              {showInstructions ? "Hide Instructions" : "How to Use This Tool"}
+            </Button>
+          </div>
         </div>
+
+        {showInstructions && (
+          <Card className="mb-8 border-dashed border-2 bg-slate-50 dark:bg-slate-950/50">
+            <CardHeader>
+              <CardTitle className="text-2xl">🎯 What's This All About?</CardTitle>
+              <CardDescription className="text-base">
+                A powerful tool to help you gain clarity on your career path and professional development
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <div>
+                <h3 className="font-semibold text-lg mb-2">Why Use a Skills Matrix?</h3>
+                <Accordion type="single" collapsible className="w-full">
+                  <AccordionItem value="individual">
+                    <AccordionTrigger className="text-base font-medium">
+                      🧑‍💻 For Individual Contributors
+                    </AccordionTrigger>
+                    <AccordionContent className="space-y-2 text-muted-foreground">
+                      <p>• Find your superpower combo where your talent meets your passion</p>
+                      <p>• Level up strategically by focusing on skills that matter</p>
+                      <p>• Nail performance reviews with actual data, not just vibes</p>
+                      <p>• Make career moves with confidence, not anxiety</p>
+                    </AccordionContent>
+                  </AccordionItem>
+                  <AccordionItem value="managers">
+                    <AccordionTrigger className="text-base font-medium">👑 For Engineering Managers</AccordionTrigger>
+                    <AccordionContent className="space-y-2 text-muted-foreground">
+                      <p>• Discover your management style and preferences</p>
+                      <p>• Delegate effectively based on your strengths</p>
+                      <p>• Guide your reports with personalized advice</p>
+                      <p>• Decide if technical leadership or people management is right for you</p>
+                    </AccordionContent>
+                  </AccordionItem>
+                  <AccordionItem value="career-changers">
+                    <AccordionTrigger className="text-base font-medium">🦋 For Career Changers</AccordionTrigger>
+                    <AccordionContent className="space-y-2 text-muted-foreground">
+                      <p>• Identify transferable skills from your current role</p>
+                      <p>• Target learning paths that align with your preferences</p>
+                      <p>• Interview with confidence despite an unconventional background</p>
+                      <p>• Avoid roles that would make you miserable</p>
+                    </AccordionContent>
+                  </AccordionItem>
+                  <AccordionItem value="caregivers">
+                    <AccordionTrigger className="text-base font-medium">
+                      🏠 For Caregivers & Life Skills Champions
+                    </AccordionTrigger>
+                    <AccordionContent className="space-y-2 text-muted-foreground">
+                      <p>• Recognize how household management translates to professional skills</p>
+                      <p>• Translate everyday experiences into resume-worthy accomplishments</p>
+                      <p>• Own your caregiving superpowers like crisis management and multitasking</p>
+                      <p>• Bridge resume gaps with confidence</p>
+                    </AccordionContent>
+                  </AccordionItem>
+                </Accordion>
+              </div>
+
+              <div>
+                <h3 className="font-semibold text-lg mb-2">How to Use This Tool</h3>
+                <ol className="space-y-3 list-decimal list-inside text-muted-foreground">
+                  <li className="pl-2">
+                    <span className="font-medium text-foreground">Fill the quadrants</span> with your skills, being
+                    honest about what you're good at, not good at, enjoy, and don't enjoy
+                  </li>
+                  <li className="pl-2">
+                    <span className="font-medium text-foreground">Drag and drop skills</span> between quadrants as you
+                    gain new insights
+                  </li>
+                  <li className="pl-2">
+                    <span className="font-medium text-foreground">Look for patterns</span> in each quadrant:
+                    <ul className="list-disc list-inside ml-6 mt-1 space-y-1">
+                      <li>
+                        <span className="text-emerald-600 dark:text-emerald-400 font-medium">Sweet Spot</span> (Good At
+                        + Enjoy): Your career foundation
+                      </li>
+                      <li>
+                        <span className="text-amber-600 dark:text-amber-400 font-medium">Growth Zone</span> (Not Good At
+                        + Enjoy): Skills worth developing
+                      </li>
+                      <li>
+                        <span className="text-sky-600 dark:text-sky-400 font-medium">Delegation Station</span> (Good At
+                        + Don't Enjoy): Perfect for trading favors
+                      </li>
+                      <li>
+                        <span className="text-rose-600 dark:text-rose-400 font-medium">Danger Zone</span> (Not Good At +
+                        Don't Enjoy): Avoid these at all costs
+                      </li>
+                    </ul>
+                  </li>
+                  <li className="pl-2">
+                    <span className="font-medium text-foreground">Save your matrix</span> and revisit it periodically as
+                    your skills and preferences evolve
+                  </li>
+                </ol>
+              </div>
+            </CardContent>
+            <CardFooter className="flex justify-center border-t pt-4">
+              <Button onClick={() => setShowInstructions(false)}>Get Started</Button>
+            </CardFooter>
+          </Card>
+        )}
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
           {(Object.keys(quadrantLabels) as QuadrantKey[]).map((quadrant) => (
             <Card
               key={quadrant}
-              className={`border shadow-sm ${quadrantColors[quadrant].split(" ")[0]}`}
+              className={`border-2 shadow-sm hover:shadow-md transition-shadow ${quadrantColors[quadrant].split(" ")[0]}`}
               onDragOver={handleDragOver}
               onDrop={() => handleDrop(quadrant)}
             >
-              <CardHeader className={quadrantColors[quadrant]}>
-                <CardTitle>{quadrantLabels[quadrant]}</CardTitle>
+              <CardHeader className={`bg-gradient-to-r ${quadrantGradients[quadrant]} rounded-t-lg`}>
+                <CardTitle className="text-xl">{quadrantLabels[quadrant]}</CardTitle>
                 <CardDescription>{quadrantDescriptions[quadrant]}</CardDescription>
               </CardHeader>
               <CardContent className="pt-6">
-                <ul className="space-y-2 min-h-[100px]">
+                <ul className="space-y-2 min-h-[120px]">
                   {skills[quadrant].map((skill, index) => (
                     <li
                       key={index}
-                      className="flex justify-between items-center p-2 rounded-md hover:bg-muted group"
+                      className="flex justify-between items-center p-2 rounded-md hover:bg-muted group border border-transparent hover:border-slate-200 dark:hover:border-slate-800 transition-colors"
                       draggable
                       onDragStart={() => handleDragStart(quadrant, index, skill)}
                     >
@@ -741,13 +861,18 @@ export default function SkillsMatrix() {
                       )}
                     </li>
                   ))}
+                  {skills[quadrant].length === 0 && (
+                    <li className="text-center py-8 text-muted-foreground italic">
+                      Drag skills here or add new ones below
+                    </li>
+                  )}
                 </ul>
               </CardContent>
             </Card>
           ))}
         </div>
 
-        <Card className="mb-6">
+        <Card className="mb-6 border-2 border-slate-200 dark:border-slate-800">
           <CardHeader>
             <CardTitle>Add New Skills</CardTitle>
             <CardDescription>Select a quadrant and add your skills</CardDescription>
@@ -755,10 +880,30 @@ export default function SkillsMatrix() {
           <CardContent>
             <Tabs value={activeQuadrant} onValueChange={(value: string) => setActiveQuadrant(value as QuadrantKey)}>
               <TabsList className="grid grid-cols-2 md:grid-cols-4 mb-4">
-                <TabsTrigger value="goodAt">Good At</TabsTrigger>
-                <TabsTrigger value="notGoodAt">Not Yet Good At</TabsTrigger>
-                <TabsTrigger value="enjoy">Enjoy</TabsTrigger>
-                <TabsTrigger value="notEnjoy">Don't Enjoy</TabsTrigger>
+                <TabsTrigger
+                  value="goodAt"
+                  className="data-[state=active]:bg-emerald-100 dark:data-[state=active]:bg-emerald-900/30"
+                >
+                  ✨ Good At
+                </TabsTrigger>
+                <TabsTrigger
+                  value="notGoodAt"
+                  className="data-[state=active]:bg-amber-100 dark:data-[state=active]:bg-amber-900/30"
+                >
+                  🌱 Not Yet Good At
+                </TabsTrigger>
+                <TabsTrigger
+                  value="enjoy"
+                  className="data-[state=active]:bg-sky-100 dark:data-[state=active]:bg-sky-900/30"
+                >
+                  🎯 Enjoy
+                </TabsTrigger>
+                <TabsTrigger
+                  value="notEnjoy"
+                  className="data-[state=active]:bg-rose-100 dark:data-[state=active]:bg-rose-900/30"
+                >
+                  ⛔ Don't Enjoy
+                </TabsTrigger>
               </TabsList>
 
               {(Object.keys(quadrantLabels) as QuadrantKey[]).map((quadrant) => (
@@ -967,7 +1112,10 @@ export default function SkillsMatrix() {
         </Card>
 
         <div className="flex justify-center">
-          <Button onClick={saveMatrix} className="flex items-center">
+          <Button
+            onClick={saveMatrix}
+            className="flex items-center bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600"
+          >
             <Save className="h-4 w-4 mr-2" />
             Save Matrix
           </Button>
