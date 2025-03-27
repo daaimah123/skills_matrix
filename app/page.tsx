@@ -275,6 +275,93 @@ export default function SkillsMatrix() {
         description: "Using data to measure performance, identify trends, and inform decisions.",
       },
     ],
+    caregiving: [
+      {
+        name: "Crisis management",
+        description:
+          "Ability to stay calm and make decisions under pressure during emergencies or high-stress situations.",
+      },
+      {
+        name: "Patience and empathy",
+        description:
+          "Capacity to understand others' needs and respond with compassion, even in challenging circumstances.",
+      },
+      {
+        name: "Multitasking",
+        description: "Managing multiple priorities simultaneously while maintaining attention to detail and quality.",
+      },
+      {
+        name: "Needs assessment",
+        description:
+          "Identifying and prioritizing others' requirements, often when they can't articulate them clearly.",
+      },
+      {
+        name: "Emotional intelligence",
+        description: "Recognizing, understanding, and managing emotions in yourself and others effectively.",
+      },
+      {
+        name: "Conflict resolution",
+        description: "De-escalating tense situations and finding solutions that address underlying needs.",
+      },
+      {
+        name: "Resourcefulness",
+        description: "Finding creative solutions with limited resources or in unexpected situations.",
+      },
+      {
+        name: "Advocacy",
+        description: "Speaking up for others' needs and navigating complex systems on their behalf.",
+      },
+      {
+        name: "Time management",
+        description: "Efficiently organizing competing priorities and making the most of limited time.",
+      },
+      {
+        name: "Adaptability",
+        description: "Quickly adjusting to changing circumstances and requirements without losing effectiveness.",
+      },
+    ],
+    adulting: [
+      {
+        name: "Financial management",
+        description: "Budgeting, planning, and making strategic decisions about resource allocation.",
+      },
+      {
+        name: "Negotiation",
+        description: "Advocating for your needs while finding mutually beneficial solutions with others.",
+      },
+      {
+        name: "Project planning",
+        description: "Breaking down complex tasks (like moving or renovations) into manageable steps with timelines.",
+      },
+      {
+        name: "Vendor management",
+        description: "Selecting, coordinating, and evaluating service providers for quality and value.",
+      },
+      {
+        name: "Research skills",
+        description: "Finding, evaluating, and applying information to make informed decisions.",
+      },
+      {
+        name: "Preventive maintenance",
+        description: "Identifying potential issues before they become problems and taking proactive steps.",
+      },
+      {
+        name: "Documentation",
+        description: "Keeping organized records of important information, transactions, and communications.",
+      },
+      {
+        name: "Boundary setting",
+        description: "Establishing and maintaining healthy limits in relationships and commitments.",
+      },
+      {
+        name: "Continuous learning",
+        description: "Acquiring new skills and knowledge as needed to address changing circumstances.",
+      },
+      {
+        name: "Community building",
+        description: "Creating and nurturing networks of mutual support and shared resources.",
+      },
+    ],
   }
 
   // Convert the skills with descriptions to a format compatible with the existing code
@@ -287,11 +374,11 @@ export default function SkillsMatrix() {
 
   // Create a lookup map for skill descriptions
   const skillDescriptions = Object.values(skillsListWithDescriptions)
-  .flat()
-  .reduce<Record<string, string>>((acc, skill) => {
-    acc[skill.name] = skill.description
-    return acc
-  }, {})
+    .flat()
+    .reduce((acc, skill) => {
+      acc[skill.name] = skill.description
+      return acc
+    }, {})
 
   const [skills, setSkills] = useState({
     goodAt: [
@@ -760,6 +847,20 @@ export default function SkillsMatrix() {
                                   onClick={() => setSelectedCategory("nonprofit")}
                                 >
                                   Nonprofit
+                                </Button>
+                                <Button
+                                  variant={selectedCategory === "caregiving" ? "default" : "outline"}
+                                  size="sm"
+                                  onClick={() => setSelectedCategory("caregiving")}
+                                >
+                                  Caregiving
+                                </Button>
+                                <Button
+                                  variant={selectedCategory === "adulting" ? "default" : "outline"}
+                                  size="sm"
+                                  onClick={() => setSelectedCategory("adulting")}
+                                >
+                                  Life Skills
                                 </Button>
                               </div>
                               <ScrollArea className="h-[300px] rounded-md border p-4">
