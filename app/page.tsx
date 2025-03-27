@@ -26,12 +26,25 @@ type Skill = {
   description: string
 }
 
-// Add this type definition after the Skill type definition (around line 20)
+// Define the quadrant key type
 type QuadrantKey = "goodAt" | "notGoodAt" | "enjoy" | "notEnjoy"
+
+// Define the category type for skill categories
+type SkillCategory = "all" | "technical" | "management" | "soft" | "nonprofit" | "domain" | "caregiving" | "adulting"
+
+// Define the type for the skills list with descriptions
+type SkillsListWithDescriptions = {
+  [category: string]: Skill[]
+}
+
+// Define the type for the skills list
+type SkillsList = {
+  [category: string]: string[]
+}
 
 export default function SkillsMatrix() {
   // Comprehensive list of skills by category with descriptions
-  const skillsListWithDescriptions = {
+  const skillsListWithDescriptions: SkillsListWithDescriptions = {
     technical: [
       {
         name: "JavaScript/TypeScript",
@@ -370,7 +383,7 @@ export default function SkillsMatrix() {
   }
 
   // Convert the skills with descriptions to a format compatible with the existing code
-  const skillsList = Object.fromEntries(
+  const skillsList: SkillsList = Object.fromEntries(
     Object.entries(skillsListWithDescriptions).map(([category, skills]) => [
       category,
       skills.map((skill) => skill.name),
@@ -430,7 +443,7 @@ export default function SkillsMatrix() {
   })
 
   // Add custom descriptions for the initial skills that aren't in the skills list
-  const customDescriptions = {
+  const customDescriptions: Record<string, string> = {
     "Debugging complex issues": "Ability to identify and resolve intricate technical problems in code or systems.",
     "Mentoring junior developers":
       "Guiding and supporting less experienced developers to grow their skills and confidence.",
@@ -462,14 +475,17 @@ export default function SkillsMatrix() {
   }
 
   // Merge the skill descriptions
-  const [allSkillDescriptions, setAllSkillDescriptions] = useState({ ...skillDescriptions, ...customDescriptions })
+  const [allSkillDescriptions, setAllSkillDescriptions] = useState<Record<string, string>>({
+    ...skillDescriptions,
+    ...customDescriptions,
+  })
 
   const [newSkill, setNewSkill] = useState("")
   const [newSkillDescription, setNewSkillDescription] = useState("")
   const [skillsDialogOpen, setSkillsDialogOpen] = useState(false)
   const [addCustomSkillOpen, setAddCustomSkillOpen] = useState(false)
   const [searchTerm, setSearchTerm] = useState("")
-  const [selectedCategory, setSelectedCategory] = useState("all")
+  const [selectedCategory, setSelectedCategory] = useState<SkillCategory>("all")
 
   const inputRef = useRef<HTMLInputElement>(null)
   const descriptionInputRef = useRef<HTMLInputElement>(null)
@@ -603,7 +619,7 @@ export default function SkillsMatrix() {
     linkElement.click()
   }
 
-  const addSkillFromList = (skill) => {
+  const addSkillFromList = (skill: string) => {
     setSkills({
       ...skills,
       [activeQuadrant]: [...skills[activeQuadrant], skill],
@@ -650,7 +666,7 @@ export default function SkillsMatrix() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-          {Object.keys(quadrantLabels).map((quadrant) => (
+          {(Object.keys(quadrantLabels) as QuadrantKey[]).map((quadrant) => (
             <Card
               key={quadrant}
               className={`border shadow-sm ${quadrantColors[quadrant].split(" ")[0]}`}
@@ -737,7 +753,7 @@ export default function SkillsMatrix() {
             <CardDescription>Select a quadrant and add your skills</CardDescription>
           </CardHeader>
           <CardContent>
-            <Tabs value={activeQuadrant} onValueChange={setActiveQuadrant}>
+            <Tabs value={activeQuadrant} onValueChange={(value: string) => setActiveQuadrant(value as QuadrantKey)}>
               <TabsList className="grid grid-cols-2 md:grid-cols-4 mb-4">
                 <TabsTrigger value="goodAt">Good At</TabsTrigger>
                 <TabsTrigger value="notGoodAt">Not Yet Good At</TabsTrigger>
@@ -745,7 +761,7 @@ export default function SkillsMatrix() {
                 <TabsTrigger value="notEnjoy">Don't Enjoy</TabsTrigger>
               </TabsList>
 
-              {Object.keys(quadrantLabels).map((quadrant) => (
+              {(Object.keys(quadrantLabels) as QuadrantKey[]).map((quadrant) => (
                 <TabsContent key={quadrant} value={quadrant} className="mt-0">
                   <div className="space-y-2">
                     <h3 className="font-medium">{quadrantLabels[quadrant]}</h3>
@@ -894,11 +910,15 @@ export default function SkillsMatrix() {
                               <ScrollArea className="h-[300px] rounded-md border p-4">
                                 <div className="flex flex-wrap gap-2">
                                   {filteredSkills.map((skill) => {
-                                    const description = skillsListWithDescriptions[
+                                    const categoryKey =
                                       selectedCategory === "all"
                                         ? Object.entries(skillsList).find(([_, skills]) => skills.includes(skill))?.[0]
                                         : selectedCategory
-                                    ]?.find((s) => s.name === skill)?.description
+
+                                    const description = categoryKey
+                                      ? skillsListWithDescriptions[categoryKey]?.find((s) => s.name === skill)
+                                          ?.description
+                                      : undefined
 
                                     return (
                                       <div key={skill} className="flex items-center">
