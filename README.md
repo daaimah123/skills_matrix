@@ -4,7 +4,7 @@
 
 ## 🔥 What's This All About?
 
-Let's be real—figuring out your career path is HARD. One day you're coding in bliss, the next you're questioning all your life choices because a CSS bug won't fix itself. Sound familiar? *Eye roll*
+Let's be real—figuring out your career path is HARD. One day you're coding in bliss, the next you're questioning all your life choices because a CSS bug won't fix itself. Sound familiar?
 
 Skills Matrix is your new BFF for career clarity. It's an interactive tool that helps you map out what you're actually good at (not what your LinkedIn says), what you need to work on (we all have those skills), what makes you jump out of bed in the morning, and what makes you want to hide under the covers.
 
@@ -12,30 +12,30 @@ Skills Matrix is your new BFF for career clarity. It's an interactive tool that 
 
 ### 🧑‍💻 For the Code Wizards (Individual Contributors)
 
-- ✨ **Find your superpower combo** Where your talent meets your passion—career jackpot!
-- 🎮 **Level up strategically** Stop wasting time on random tutorials and focus on skills that matter
-- 💯 **Nail that performance review** Come prepared with actual data, not just vibes
-- 🚀 **Make career moves with confidence** No more "Is this job right for me?" anxiety spirals
+- ✨ Find your superpower combo, where talent meets your passion!
+- 🎮 Level up strategically, stop wasting time on random tutorials and focus on skills that matter
+- 💯 Nail that performance review
+- 🚀 Make career moves with confidence. No more "Is this job right for me?" anxiety spirals
 
 ### 👑 For the People Herders (Engineering Managers)
 
-- 🕶️ **Discover your management style** Are you more Ted Lasso or Miranda Priestly?
-- 👉 **Delegate like a boss** "This task? Not my jam. Here YOU go!"
-- 🌱 **Actually help your reports** Guide them with something better than generic advice
-- 🤔 **Decide if you want that promotion** Technical leadership or people management? The eternal question...
+- 🕶️ Discover your management style
+- 👉 Delegate like a boss. "This task? Not my jam. Here YOU go!"
+- 🌱 Actually help your reports. Guide them with something better than generic advice
+- 🤔 Decide if you want that promotion. Technical leadership or people management? The eternal question...
 
 ### 🦋 For the Career Metamorphosis Crowd
 
-- 🔄 **Spot those transferable skills** Yes, your current skills ARE valuable elsewhere!
-- 🎯 **Target the right learning paths** Don't waste time on skills you'll hate using
-- 💪 **Interview with confidence** "Here's why I'm awesome despite my unconventional background"
-- 🚩 **Dodge bullet jobs** Identify roles that would make you miserable before it's too late
+- 🔄 Spot those transferable skills. Yes, your current skills ARE valuable elsewhere!
+- 🎯 Target the right learning paths. Don't waste time on skills you'll hate using
+- 💪 Interview with confidence. "Here's why I'm awesome despite my unconventional background"
+- 🚩 Dodge bullet jobs. Identify roles that would make you miserable before it's too late
 
 ### 🏠 For the Life Skills Champions (Caregivers & Adulting Pros)
-- 💎 **Recognize your hidden professional skills** That chaos management at home? It's called "crisis leadership" at work!
-- 🔄 **Translate everyday experiences** "I managed a household budget" = "I have financial planning experience"
-- 💪 **Own your superpowers** Juggling family needs is elite-level stakeholder management
-- 🌉 **Bridge resume gaps with confidence** Caregiving years developed skills that companies desperately need
+- 💎 Recognize your hidden professional skills. That chaos management at home? It's called "crisis leadership" at work!
+- 🔄 Translate everyday experiences. "I managed a household budget" = "I have financial planning experience"
+- 💪 Own those superpowers. Juggling family needs is elite-level stakeholder management
+- 🌉 Bridge resume gaps with confidence. Caregiving years developed skills that companies desperately need
 
 ## ✨ Cool Features (Because We're Fancy Like That)
 
@@ -107,6 +107,7 @@ Zero backend because who needs that drama? It all runs in your browser like magi
 ```bash
 git clone https://github.com/yourusername/skills-matrix.git
 cd skills-matrix
+npm run dev
 ```
 
 ## 📜 License
