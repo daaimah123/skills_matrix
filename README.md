@@ -12,34 +12,34 @@ https://daaimah123.github.io/skills_matrix/
 
 ## 💁‍♀️ Why Should You Care?
 
-### 🧑‍💻 For the Code Wizards (Individual Contributors)
+### For the Code Wizards (Individual Contributors)
 
 - ✨ Find your superpower combo, where talent meets your passion!
 - 🎮 Level up strategically, stop wasting time on random tutorials and focus on skills that matter
 - 💯 Nail that performance review
 - 🚀 Make career moves with confidence. No more "Is this job right for me?" anxiety spirals
 
-### 👑 For the People Herders (Engineering Managers)
+### For the People Herders (Engineering Managers)
 
 - 🕶️ Discover your management style
 - 👉 Delegate like a boss. "This task? Not my jam. Here YOU go!"
 - 🌱 Actually help your reports. Guide them with something better than generic advice
 - 🤔 Decide if you want that promotion. Technical leadership or people management? The eternal question...
 
-### 🦋 For the Career Metamorphosis Crowd
+### For the Career Metamorphosis Crowd
 
 - 🔄 Spot those transferable skills. Yes, your current skills ARE valuable elsewhere!
 - 🎯 Target the right learning paths. Don't waste time on skills you'll hate using
 - 💪 Interview with confidence. "Here's why I'm awesome despite my unconventional background"
 - 🚩 Dodge bullet jobs. Identify roles that would make you miserable before it's too late
 
-### 🏠 For the Life Skills Champions (Caregivers & Adulting Pros)
+### For the Life Skills Champions (Caregivers & Adulting Pros)
 - 💎 Recognize your hidden professional skills. That chaos management at home? It's called "crisis leadership" at work!
 - 🔄 Translate everyday experiences. "I managed a household budget" = "I have financial planning experience"
 - 💪 Own those superpowers. Juggling family needs is elite-level stakeholder management
 - 🌉 Bridge resume gaps with confidence. Caregiving years developed skills that companies desperately need
 
-## ✨ Cool Features (Because We're Fancy Like That)
+## Cool Features (Because I'm Fancy Like That)
 
 - 🧩 **Drag-and-drop quadrants** Because your skills aren't static and neither is this app
 - ☕ **Hover for the tea** Info icons reveal the juicy details about each skill
