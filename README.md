@@ -8,6 +8,8 @@ Let's be real—figuring out your career path is HARD. One day you're coding in 
 
 Skills Matrix gives you something closer to career clarity. It's an interactive tool that helps you map out what you're actually good at (not what your LinkedIn says), what you need to work on (we all have those skills), what makes you jump out of bed in the morning, and what makes you want to hide under the covers.
 
+https://daaimah123.github.io/skills_matrix/
+
 ## 💁‍♀️ Why Should You Care?
 
 ### 🧑‍💻 For the Code Wizards (Individual Contributors)
