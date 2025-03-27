@@ -551,8 +551,9 @@ export default function SkillsMatrix() {
     setDraggedSkill(null)
   }
 
+  // Update the saveEdit function to check for null values
   const saveEdit = () => {
-    if (editingSkill.value.trim()) {
+    if (editingSkill.quadrant !== null && editingSkill.index !== null && editingSkill.value.trim()) {
       const updatedSkills = [...skills[editingSkill.quadrant]]
       updatedSkills[editingSkill.index] = editingSkill.value
       setSkills({
