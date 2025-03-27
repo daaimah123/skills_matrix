@@ -1,5 +1,7 @@
 "use client"
 
+import type React from "react"
+
 import { useState, useRef, useEffect } from "react"
 import { PlusCircle, Save, Trash2, Edit, Check, X, List, Info } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -23,6 +25,9 @@ type Skill = {
   name: string
   description: string
 }
+
+// Add this type definition after the Skill type definition (around line 20)
+type QuadrantKey = "goodAt" | "notGoodAt" | "enjoy" | "notEnjoy"
 
 export default function SkillsMatrix() {
   // Comprehensive list of skills by category with descriptions
@@ -380,7 +385,25 @@ export default function SkillsMatrix() {
       return acc
     }, {})
 
-  const [skills, setSkills] = useState({
+  // Then update the activeQuadrant state definition (around line 290)
+  const [activeQuadrant, setActiveQuadrant] = useState<QuadrantKey>("goodAt")
+
+  // Also update the editingSkill state to use the QuadrantKey type
+  const [editingSkill, setEditingSkill] = useState<{
+    quadrant: QuadrantKey | null
+    index: number | null
+    value: string
+  }>({ quadrant: null, index: null, value: "" })
+
+  // Update the draggedSkill state
+  const [draggedSkill, setDraggedSkill] = useState<{
+    quadrant: QuadrantKey
+    index: number
+    skill: string
+  } | null>(null)
+
+  // Update the skills type (around line 230)
+  const [skills, setSkills] = useState<Record<QuadrantKey, string[]>>({
     goodAt: [
       "Debugging complex issues",
       "Mentoring junior developers",
@@ -443,9 +466,6 @@ export default function SkillsMatrix() {
 
   const [newSkill, setNewSkill] = useState("")
   const [newSkillDescription, setNewSkillDescription] = useState("")
-  const [activeQuadrant, setActiveQuadrant] = useState("goodAt")
-  const [editingSkill, setEditingSkill] = useState({ quadrant: null, index: null, value: "" })
-  const [draggedSkill, setDraggedSkill] = useState(null)
   const [skillsDialogOpen, setSkillsDialogOpen] = useState(false)
   const [addCustomSkillOpen, setAddCustomSkillOpen] = useState(false)
   const [searchTerm, setSearchTerm] = useState("")
@@ -487,7 +507,8 @@ export default function SkillsMatrix() {
     }
   }
 
-  const removeSkill = (quadrant, index) => {
+  // Update the removeSkill function parameter types
+  const removeSkill = (quadrant: QuadrantKey, index: number) => {
     const updatedSkills = [...skills[quadrant]]
     updatedSkills.splice(index, 1)
     setSkills({
@@ -496,8 +517,38 @@ export default function SkillsMatrix() {
     })
   }
 
-  const startEditing = (quadrant, index, value) => {
+  // Update the startEditing function parameter types
+  const startEditing = (quadrant: QuadrantKey, index: number, value: string) => {
     setEditingSkill({ quadrant, index, value })
+  }
+
+  // Update the handleDragStart function parameter types
+  const handleDragStart = (quadrant: QuadrantKey, index: number, skill: string) => {
+    setDraggedSkill({ quadrant, index, skill })
+  }
+
+  // Update the handleDragOver function parameter types
+  const handleDragOver = (e) => {
+    e.preventDefault()
+  }
+
+  // Update the handleDrop function parameter types
+  const handleDrop = (targetQuadrant: QuadrantKey) => {
+    if (draggedSkill && draggedSkill.quadrant !== targetQuadrant) {
+      // Remove from source quadrant
+      const sourceSkills = [...skills[draggedSkill.quadrant]]
+      sourceSkills.splice(draggedSkill.index, 1)
+
+      // Add to target quadrant
+      const targetSkills = [...skills[targetQuadrant], draggedSkill.skill]
+
+      setSkills({
+        ...skills,
+        [draggedSkill.quadrant]: sourceSkills,
+        [targetQuadrant]: targetSkills,
+      })
+    }
+    setDraggedSkill(null)
   }
 
   const saveEdit = () => {
@@ -516,7 +567,8 @@ export default function SkillsMatrix() {
     setEditingSkill({ quadrant: null, index: null, value: "" })
   }
 
-  const handleKeyDown = (e) => {
+  // Update the handleKeyDown function parameter type
+  const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "Enter") {
       if (editingSkill.quadrant !== null) {
         saveEdit()
@@ -531,32 +583,6 @@ export default function SkillsMatrix() {
         setNewSkillDescription("")
       }
     }
-  }
-
-  const handleDragStart = (quadrant, index, skill) => {
-    setDraggedSkill({ quadrant, index, skill })
-  }
-
-  const handleDragOver = (e) => {
-    e.preventDefault()
-  }
-
-  const handleDrop = (targetQuadrant) => {
-    if (draggedSkill && draggedSkill.quadrant !== targetQuadrant) {
-      // Remove from source quadrant
-      const sourceSkills = [...skills[draggedSkill.quadrant]]
-      sourceSkills.splice(draggedSkill.index, 1)
-
-      // Add to target quadrant
-      const targetSkills = [...skills[targetQuadrant], draggedSkill.skill]
-
-      setSkills({
-        ...skills,
-        [draggedSkill.quadrant]: sourceSkills,
-        [targetQuadrant]: targetSkills,
-      })
-    }
-    setDraggedSkill(null)
   }
 
   const saveMatrix = () => {
@@ -583,21 +609,22 @@ export default function SkillsMatrix() {
     })
   }
 
-  const quadrantLabels = {
+  // Update the quadrantLabels and quadrantDescriptions types
+  const quadrantLabels: Record<QuadrantKey, string> = {
     goodAt: "What I'm Good At",
     notGoodAt: "What I'm Not Yet Good At",
     enjoy: "What I Enjoy Doing",
     notEnjoy: "What I Don't Enjoy Doing",
   }
 
-  const quadrantDescriptions = {
+  const quadrantDescriptions: Record<QuadrantKey, string> = {
     goodAt: "Skills and abilities you've mastered or perform well",
     notGoodAt: "Areas where you need improvement or more experience",
     enjoy: "Tasks and responsibilities that energize you",
     notEnjoy: "Activities that drain your energy or motivation",
   }
 
-  const quadrantColors = {
+  const quadrantColors: Record<QuadrantKey, string> = {
     goodAt: "border-green-200 bg-green-50 dark:bg-green-950/20",
     notGoodAt: "border-yellow-200 bg-yellow-50 dark:bg-yellow-950/20",
     enjoy: "border-blue-200 bg-blue-50 dark:bg-blue-950/20",
