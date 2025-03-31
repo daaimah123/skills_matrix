@@ -107,8 +107,7 @@ Zero backend because who needs that drama? It all runs in your browser like magi
 1. Clone it like you mean it
 
 ```bash
-git clone https://github.com/yourusername/skills-matrix.git
-cd skills-matrix
+npm install
 npm run dev
 ```
 
