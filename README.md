@@ -49,6 +49,10 @@ https://daaimah123.github.io/skills_matrix/
 - 💖 **Nonprofit sector focus** For the do-gooders making less money but more impact
 - 💾 **Save your work** Export as JSON because even self-reflection needs a backup
 
+## Future Features
+
+- Mobile & Tablet responsiveness, currently best use is on desktop
+
 ## 🤓 How To Actually Use This Thing
 
 1. 📝 **Fill those quadrants** Be honest! No one's watching (except your future self)
